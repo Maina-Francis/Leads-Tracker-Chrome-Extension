@@ -1,5 +1,5 @@
 // my leads handler
-let myLeads = ["http://127.0.0.1:5500/index.html", "vvvvv"];
+let myLeads = [];
 const unorderedList = document.getElementById("unordered-list");
 
 const userInput = document.getElementById("input");
@@ -9,10 +9,14 @@ const inputBtn = document.getElementById("input-button");
 
 inputBtn.addEventListener("click", () => {
   myLeads.push(userInput.value);
-  console.log(myLeads);
+  renderLeads();
 });
 
-//loop through myLeads array and rendering it to the unordered list
-for (let i = 0; i < myLeads.length; i++) {
-  unorderedList.innerHTML += "<li>" + myLeads[i] + "</li>";
+function renderLeads() {
+  //loop through myLeads array and rendering it to the unordered list
+  let listItems = "";
+  for (let i = 0; i < myLeads.length; i++) {
+    listItems += "<li>" + myLeads[i] + "</li>";
+  }
+  unorderedList.innerHTML = listItems;
 }
