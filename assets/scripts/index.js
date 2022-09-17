@@ -13,7 +13,7 @@ const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 //Renders any leads from localStorage
 if (leadsFromLocalStorage) {
   myLeads = leadsFromLocalStorage;
-  renderLeads();
+  renderLeads(myLeads);
 }
 
 //Delete Dom Content
@@ -21,7 +21,7 @@ const deleteBtn = document.getElementById("delete-btn");
 deleteBtn.addEventListener("dblclick", () => {
   myLeads = "";
   localStorage.clear();
-  renderLeads();
+  renderLeads(myLeads);
 });
 
 //Save Input
@@ -32,16 +32,16 @@ inputBtn.addEventListener("click", () => {
 
   //Save myLeads array to localStorage
   localStorage.setItem("myLeads", JSON.stringify(myLeads));
-  renderLeads();
+  renderLeads(myLeads);
 });
 
-function renderLeads() {
+function renderLeads(leads) {
   //loop through myLeads array and rendering it to the unordered list
   let listItems = "";
-  for (let i = 0; i < myLeads.length; i++) {
+  for (let i = 0; i < leads.length; i++) {
     listItems += `
         <li>
-            <a target ='_blank' href= '${myLeads[i]}'> ${myLeads[i]}</a>
+            <a target ='_blank' href= '${leads[i]}'> ${leads[i]}</a>
         </li>
         `;
 
