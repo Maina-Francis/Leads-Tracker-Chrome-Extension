@@ -8,7 +8,16 @@ const userInput = document.getElementById("input");
 const inputBtn = document.getElementById("input-button");
 
 //Save Tab button
-tabBtn.addEventListener("click", () => {});
+tabBtn.addEventListener("click", () => {
+  //using chome tabs API
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    // since only one tab should be active and in the current window at once
+    //the return variable should only have one entry
+    myLeads.push(tabs[0].url);
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    renderLeads(myLeads);
+  });
+});
 
 //Local Storage
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
