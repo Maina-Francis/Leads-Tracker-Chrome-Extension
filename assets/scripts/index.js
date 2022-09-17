@@ -1,11 +1,14 @@
 // my leads handler
 let myLeads = [];
 const unorderedList = document.getElementById("unordered-list");
-
+const tabBtn = document.getElementById("tab-btn");
 const userInput = document.getElementById("input");
 
 // Save Input button handler
 const inputBtn = document.getElementById("input-button");
+
+//Save Tab button
+tabBtn.addEventListener("click", () => {});
 
 //Local Storage
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
@@ -55,3 +58,7 @@ function renderLeads(leads) {
 // console.log(localStorage.myLead);
 localStorage.clear();
 console.log(localStorage.getItem("myLead"));
+
+function getArr(arr) {
+  return arr[0];
+}
