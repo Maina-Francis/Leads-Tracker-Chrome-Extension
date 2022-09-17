@@ -7,7 +7,8 @@ const userInput = document.getElementById("input");
 // Save Input button handler
 const inputBtn = document.getElementById("input-button");
 
-let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+//Local Storage
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
 //Renders any leads from localStorage
 if (leadsFromLocalStorage) {
@@ -15,6 +16,15 @@ if (leadsFromLocalStorage) {
   renderLeads();
 }
 
+//Delete Dom Content
+const deleteBtn = document.getElementById("delete-btn");
+deleteBtn.addEventListener("dblclick", () => {
+  myLeads = "";
+  localStorage.clear();
+  renderLeads();
+});
+
+//Save Input
 inputBtn.addEventListener("click", () => {
   myLeads.push(userInput.value);
   //clear input field
