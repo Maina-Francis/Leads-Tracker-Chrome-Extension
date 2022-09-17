@@ -7,6 +7,14 @@ const userInput = document.getElementById("input");
 // Save Input button handler
 const inputBtn = document.getElementById("input-button");
 
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+
+//Renders any leads from localStorage
+if (leadsFromLocalStorage) {
+  myLeads = leadsFromLocalStorage;
+  renderLeads();
+}
+
 inputBtn.addEventListener("click", () => {
   myLeads.push(userInput.value);
   //clear input field
@@ -15,7 +23,6 @@ inputBtn.addEventListener("click", () => {
   //Save myLeads array to localStorage
   localStorage.setItem("myLeads", JSON.stringify(myLeads));
   renderLeads();
-  // console.log(localStorage.getItem("myLeads"));
 });
 
 function renderLeads() {
